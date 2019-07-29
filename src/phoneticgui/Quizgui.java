@@ -62,6 +62,10 @@ public class Quizgui extends JFrame {
 		questionPanel.setOpaque(false);
 		contentPane.add(questionPanel, BorderLayout.CENTER);
 		
+		/**
+		* Panel for displaying the Questions and other information
+		* TODO: implement functionality to update content based on navigation, etc.
+		**/
 		JLabel questionsl = new JLabel("Question");
 		questionsl.setBackground(Color.WHITE);
 		questionsl.setFont(new Font("Times New Roman", Font.PLAIN, 26));
@@ -70,6 +74,10 @@ public class Quizgui extends JFrame {
 		questionPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		questionPanel.add(questionsl);
 		
+		/**
+	 	* Bottom control panel for answers/Navigation
+		* TODO: add functionality/ actionlisteners
+	 	*/
 		JPanel controlPanel = new JPanel();
 		contentPane.add(controlPanel, BorderLayout.SOUTH);
 		controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.X_AXIS));
