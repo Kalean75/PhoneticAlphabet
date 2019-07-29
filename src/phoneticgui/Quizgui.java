@@ -25,6 +25,9 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 
+/**
+*@author Devin White
+**/
 public class Quizgui extends JFrame {
 
 	private JPanel contentPane;
