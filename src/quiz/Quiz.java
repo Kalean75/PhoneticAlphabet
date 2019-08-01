@@ -16,20 +16,20 @@ import java.util.Scanner;
 @SuppressWarnings("serial")
 public class Quiz extends ArrayList<Question> {
 	
-	private String quizName;						//Name of quiz
 	private ArrayList<Question> incorrectQuestions; //A list of incorrect questions
 	private int incorrect;							//Number of incorrect answers
 	private Result result;							//Results post quiz
-	private Iterator iter;							//Allows traversal of questions
+	public Iterator iter;							//Allows traversal of questions
 
 	/**
 	 * Constructs a Quiz with questions from the phonetic alphabet
 	 * 
 	 * @throws FileNotFoundException
+	 * @throws QuizException 
 	 */
-	public Quiz() throws FileNotFoundException {
+	public Quiz() throws FileNotFoundException, QuizException {
 		this("src/files/PhoneticQuestions.txt", "src/files/PhoneticAnswers.txt");
-		iter = this.iterator();
+		
 	}
 
 	/**
@@ -38,8 +38,10 @@ public class Quiz extends ArrayList<Question> {
 	 * 
 	 * @param questionPath
 	 * @param answerPath
+	 * @throws QuizException
+	 * @throws FileNotFoundException
 	 */
-	public Quiz(String questionPath, String answerPath) throws FileNotFoundException {
+	public Quiz(String questionPath, String answerPath) throws FileNotFoundException, QuizException {
 		ArrayList<String> question = fileToArray(questionPath);
 		ArrayList<String> answer = fileToArray(answerPath);
 
@@ -48,7 +50,7 @@ public class Quiz extends ArrayList<Question> {
 				this.add(new Question(question.get(i), answer.get(i)));
 			}
 		} else {
-			throw new IndexOutOfBoundsException("The question file and answer file do not have the same number of lines");
+			throw new QuizException("The question file and answer file do not have the same number of lines");
 		}
 	}
 

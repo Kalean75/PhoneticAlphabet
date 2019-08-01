@@ -23,12 +23,7 @@ public class Question {
 		this.answer = answer;
 	}
 
-	/**
-	 * @return the question
-	 */
-	public String getQuestion() {
-		return question;
-	}
+
 
 	@Override
 	public int hashCode() {
@@ -66,6 +61,13 @@ public class Question {
 	 */
 	public String getAnswer() {
 		return answer;
+	}
+	
+	/**
+	 * @return the question
+	 */
+	public String getQuestion() {
+		return question;
 	}
 	
 	/**

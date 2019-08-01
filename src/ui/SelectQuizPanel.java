@@ -6,8 +6,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import quiz.Quiz;
+
 import javax.swing.JButton;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * First Panel that asks user to selct a quiz
@@ -17,16 +22,17 @@ import java.awt.Dimension;
 @SuppressWarnings("serial")
 public class SelectQuizPanel extends JPanel {
 
-	public JButton btnNato;
-	public JButton btnCustom;
+	protected JButton btnNato;
+	protected JButton btnCustom;
+
 
 	/**
 	 * Create the panel.
 	 */
 	public SelectQuizPanel() {
-		setBorder(new EmptyBorder(20, 0, 0, 0));
+		setBorder(new EmptyBorder(5, 0, 0, 0));
 		setLayout(new BorderLayout(0, 0));
-		
+		setBounds(0, 0, 414, 228);
 		JLabel lblTitle = new JLabel("Select Quiz");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -41,20 +47,18 @@ public class SelectQuizPanel extends JPanel {
 	 * @return
 	 */
 	private JPanel createButtonPanel() {
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBorder(new EmptyBorder(0, 0, 10, 0));
-
-		
+		JPanel controlPanel = new JPanel();
+			
 		createNatoBtn();
 		createCustomBtn();
 		
-		buttonPanel.add(btnNato);
-		buttonPanel.add(btnCustom);
-		return buttonPanel;
+		controlPanel.add(btnNato);
+		controlPanel.add(btnCustom);
+		return controlPanel;
 	}
 	
 	/**
-	 * Instansiates btnNato
+	 * Create btnNato
 	 */
 	private void createNatoBtn() {
 		btnNato = new JButton("NATO Alphabet");
@@ -62,7 +66,7 @@ public class SelectQuizPanel extends JPanel {
 	}
 	
 	/**
-	 * Instansiates btnCustom
+	 * Create btnCustom
 	 */
 	private void createCustomBtn() {
 		btnCustom = new JButton("Custom Quiz");

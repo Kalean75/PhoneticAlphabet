@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import quiz.Question;
 import quiz.Quiz;
+import quiz.QuizException;
 
 class QuestionListTest {
 
@@ -19,6 +20,9 @@ class QuestionListTest {
 		try {
 			quiz = new Quiz("src/files/PhoneticQuestions.txt", "src/files/PhoneticAnswers.txt");
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (QuizException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

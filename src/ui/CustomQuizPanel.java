@@ -7,43 +7,40 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import javax.swing.JTextArea;
 import java.awt.Dimension;
 import javax.swing.JButton;
-import java.awt.GridLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 
 public class CustomQuizPanel extends JPanel {
-	private JTextField txtQuestionpath;
-	private JTextField txtAnswerpath;
+	public JTextField txtQuestionpath;
+	public JTextField txtAnswerpath;
+	public JButton btnBack;
+	public JButton btnSubmit;
 
 	/**
 	 * Create the panel.
 	 */
 	public CustomQuizPanel() {
-		setBorder(new EmptyBorder(20, 0, 0, 0));
+		setBorder(new EmptyBorder(0, 0, 0, 0));
 		setLayout(new BorderLayout(0, 0));
+		setBounds(0, 0, 414, 228);
 		
 		JLabel lblTitle = new JLabel("Custom Quiz");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		add(lblTitle, BorderLayout.NORTH);
 		
-		JPanel buttonPanel = new JPanel();
-		add(buttonPanel, BorderLayout.SOUTH);
+		JPanel controlPanel = new JPanel();
+		add(controlPanel, BorderLayout.SOUTH);
 		
-		JButton btnBack = new JButton("Back");
+		btnBack = new JButton("Back");
 		btnBack.setPreferredSize(new Dimension(120, 23));
-		buttonPanel.add(btnBack);
+		controlPanel.add(btnBack);
 		
-		JButton btnSubmit = new JButton("Submit");
+		btnSubmit = new JButton("Submit");
 		btnSubmit.setPreferredSize(new Dimension(120, 23));
-		buttonPanel.add(btnSubmit);
+		controlPanel.add(btnSubmit);
 		
 		JPanel textFieldPanel = createTextFieldPanel();
 		add(textFieldPanel, BorderLayout.CENTER);
