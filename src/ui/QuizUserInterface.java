@@ -199,6 +199,10 @@ public class QuizUserInterface extends JFrame {
 		
 		mmPanel.btnStudy.addActionListener(e -> {
 			switchPanel(studyPanel);
+			studyPanel.btnBack.setVisible(false);
+			maxIndex = quiz.size() - 1;	
+			quizIndex = 0;
+			studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
 		});
 		
 		//quizPanel===========================================
@@ -226,6 +230,53 @@ public class QuizUserInterface extends JFrame {
 			}
 		});
 		
+		//StudyPanel===========================================
+		studyPanel.btnFwd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(quizIndex == maxIndex - 1) {
+					studyPanel.btnFwd.setVisible(false);
+				}
+				
+				studyPanel.lblQuestion.setText(quiz.getQuestion(nextIndex()));
+				
+				if(hasPreviousIndex())
+				{
+					studyPanel.btnBack.setVisible(true);
+				}
+				
+				
+				//TODO: figure out how to cycle through Answers
+			}
+		});
+		
+		studyPanel.btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				studyPanel.lblQuestion.setText(quiz.getQuestion(lastIndex()));
+				if(!hasPreviousIndex())
+				{
+					studyPanel.btnBack.setVisible(false);
+				}
+				
+				if(hasNextIndex()) {
+					studyPanel.btnFwd.setVisible(true);
+				}
+				
+				//TODO: figure out how to cycle through answers
+			}
+		});
+		
+		//resultsPanel===========================================
+		//TODO: implement reult actions
+		/*resultPanel.btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		resultPanel.btnRetake.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});*/
 	}
 
 }
