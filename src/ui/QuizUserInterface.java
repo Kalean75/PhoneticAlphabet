@@ -26,8 +26,8 @@ public class QuizUserInterface extends JFrame {
 	private CustomQuizPanel cqPanel;
 	private MainMenuPanel mmPanel;
 	private QuizPanel quizPanel;
-	//TODO private ResultPanel resultPanel;
-	//TODO private StudyPanel studyPanel;
+	private ResultPanel resultPanel;
+	private StudyPanel studyPanel;
 	
 	private int quizIndex;
 	private int maxIndex;
@@ -92,8 +92,8 @@ public class QuizUserInterface extends JFrame {
 		cqPanel = new CustomQuizPanel();
 		mmPanel = new MainMenuPanel();
 		quizPanel = new QuizPanel();
-		//TODO instansiate studyPanel
-		//TODO instansiate resultPanel
+		studyPanel = new StudyPanel();
+		resultPanel = new ResultPanel();
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class QuizUserInterface extends JFrame {
 		});
 		
 		mmPanel.btnStudy.addActionListener(e -> {
-			//TODO switchPanel(studyPanel);
+			switchPanel(studyPanel);
 		});
 		
 		//quizPanel===========================================
@@ -222,7 +222,7 @@ public class QuizUserInterface extends JFrame {
 			else {
 				quizPanel.answerField.setText("this is when the result panel would show");	//remove this once switchPanel is implemented
 				quizPanel.repaint();
-				//TODO switchPanel(resultPanel);
+				switchPanel(resultPanel);
 			}
 		});
 		
