@@ -50,7 +50,5 @@ public class MainMenuPanel extends JPanel {
 		btnStudy.setPreferredSize(new Dimension(120, 23));
 		return btnStudy;
 	}
-	
-	
 
 }

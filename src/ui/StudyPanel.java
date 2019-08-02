@@ -11,6 +11,9 @@ public class StudyPanel extends JPanel {
 
 	protected JButton btnBack;
 	protected JButton btnFwd;
+	protected JLabel lblTitle;
+	protected JLabel lblQuestion;
+	protected JPanel controlPanel;
 	/**
 	 * Create the panel.
 	 */
@@ -30,14 +33,20 @@ public class StudyPanel extends JPanel {
 		JPanel controlPanel = new JPanel();
 		add(controlPanel, BorderLayout.SOUTH);
 		
+		createFwdBtn(controlPanel);
+		
+		createBackBtn(controlPanel);
+
+	}
+	private void createFwdBtn(JPanel controlPanel) {
 		btnFwd = new JButton("  <");
 		btnFwd.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		controlPanel.add(btnFwd);
-		
+	}
+	private void createBackBtn(JPanel controlPanel) {
 		btnBack = new JButton("   >");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		controlPanel.add(btnBack);
-
 	}
 
 }
