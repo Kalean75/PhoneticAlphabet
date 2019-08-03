@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.GridLayout;
 
 public class StudyPanel extends JPanel {
 
@@ -19,6 +20,9 @@ public class StudyPanel extends JPanel {
 	protected JPanel controlPanel;
 	protected JButton btnMenu;
 	protected JButton btnQuiz;
+	protected JButton btnQues;
+	protected JPanel panel;
+	protected JButton btnAns;
 	/**
 	 * Create the panel.
 	 */
@@ -46,6 +50,19 @@ public class StudyPanel extends JPanel {
 		createFwdBtn(controlPanel);
 		
 		createQuizbtn(controlPanel);
+		{
+			panel = new JPanel();
+			add(panel, BorderLayout.EAST);
+			panel.setLayout(new GridLayout(0, 1, 0, 0));
+			{
+				btnQues = new JButton("Question");
+				panel.add(btnQues);
+			}
+			{
+				btnAns = new JButton("Answer");
+				panel.add(btnAns);
+			}
+		}
 	}
 	private void createMenubtn(JPanel controlPanel) {
 		btnMenu = new JButton("Main Menu");

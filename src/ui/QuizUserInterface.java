@@ -207,7 +207,8 @@ public class QuizUserInterface extends JFrame {
 			maxIndex = quiz.size() - 1;	
 			quizIndex = 0;
 			switchPanel(studyPanel);
-			studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex) + ": "+ quiz.getAnswer(quizIndex));
+			studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
+			studyPanel.btnQues.setEnabled(false);
 			studyPanel.btnBack.setEnabled(false);
 			studyPanel.btnFwd.setEnabled(true);
 		});
@@ -247,14 +248,15 @@ public class QuizUserInterface extends JFrame {
 		
 		//StudyPanel===========================================
 		studyPanel.btnFwd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {	
+				quiz.getQuestion(nextIndex());
+				studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
+				studyPanel.btnAns.setEnabled(true);
+				studyPanel.btnQues.setEnabled(false);
 				
 				if(quizIndex == maxIndex - 1) {
 					studyPanel.btnFwd.setEnabled(false);
 				}
-				
-				studyPanel.lblQuestion.setText(quiz.getQuestion(nextIndex())+ ":  "+ quiz.getAnswer(quizIndex));
-				
 				if(hasPreviousIndex())
 				{
 					studyPanel.btnBack.setEnabled(true);
@@ -265,16 +267,19 @@ public class QuizUserInterface extends JFrame {
 		
 		studyPanel.btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				studyPanel.lblQuestion.setText(quiz.getQuestion(lastIndex())+ ":  "+ quiz.getAnswer(quizIndex));
+				quiz.getQuestion(lastIndex());
+				studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
+				studyPanel.btnAns.setEnabled(true);
+				studyPanel.btnQues.setEnabled(false);
+				
 				if(!hasPreviousIndex())
 				{
 					studyPanel.btnBack.setEnabled(false);
 				}
-				
 				if(hasNextIndex()) {
 					studyPanel.btnFwd.setEnabled(true);
 				}
-
+				
 			}
 		});
 		
@@ -289,6 +294,22 @@ public class QuizUserInterface extends JFrame {
 				studyPanel.btnFwd.setEnabled(true);
 				studyPanel.btnBack.setEnabled(true);
 				switchPanel(sqPanel);
+			}
+		});
+		
+		studyPanel.btnQues.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				studyPanel.btnAns.setEnabled(true);
+				studyPanel.btnQues.setEnabled(false);
+				studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
+			}
+		});
+		
+		studyPanel.btnAns.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				studyPanel.btnQues.setEnabled(true);
+				studyPanel.btnAns.setEnabled(false);
+				studyPanel.lblQuestion.setText(quiz.getAnswer(quizIndex));
 			}
 		});
 		
