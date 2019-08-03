@@ -1,11 +1,9 @@
 package quiz;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 /**
  * 
@@ -27,7 +25,7 @@ public class Result {
 		this.incorrect = incorrect;
 		
 	}
-	
+
 	//TODO
 	public void writeToFile() throws IOException {
 		//TODO: fill in 

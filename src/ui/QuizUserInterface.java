@@ -29,7 +29,6 @@ public class QuizUserInterface extends JFrame {
 	private JPanel contentPane;
 	private JLayeredPane layeredPane;
 	private Quiz quiz;
-	private Result result;
 	private SelectQuizPanel sqPanel;
 	private CustomQuizPanel cqPanel;
 	private MainMenuPanel mmPanel;
@@ -92,7 +91,7 @@ public class QuizUserInterface extends JFrame {
 	}
 
 	/**
-	 * instansites fields
+	 * instantiates fields
 	 */
 	private void instansiateFields() {
 		sqPanel = new SelectQuizPanel();
@@ -314,10 +313,9 @@ public class QuizUserInterface extends JFrame {
 				resultPanel.btnLatest.setVisible(true);
 				resultPanel.btnLast5.setVisible(false);
 				try {
-					resultPanel.textResults.setText(quiz.getLast5().toString());
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					resultPanel.textResults.setText(quiz.getLast5());
+				} catch (FileNotFoundException ex) {
+					ex.printStackTrace();
 				}
 			}
 		});
@@ -327,6 +325,7 @@ public class QuizUserInterface extends JFrame {
 				resultPanel.btnLast5.setVisible(true);
 				resultPanel.btnLatest.setVisible(false);
 				resultPanel.textResults.setText(quiz.getResult());
+
 			}
 		});
 	}

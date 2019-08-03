@@ -103,10 +103,19 @@ public class Quiz extends ArrayList<Question> {
 	public String getResult() {
 		return result.toString();
 	}
-	
-	public String getLast5() throws FileNotFoundException {
-		return Results + "";
-	  } 
+
+	public static String getLast5() throws FileNotFoundException {
+		StringBuilder sb = new StringBuilder();
+		Scanner sc = new Scanner(new File("src/files/Results.txt"));
+		String last5;
+		for(int i = 0; i < 5; i++){
+			if (sc.hasNextLine()){
+				sb.append(sc.nextLine());
+				sb.append(System.getProperty("line.separator"));
+			}
+		}
+		return sb.toString();
+	}
 	
 	/**
 	 * 
