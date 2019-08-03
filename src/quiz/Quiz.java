@@ -67,6 +67,10 @@ public class Quiz extends ArrayList<Question> {
 	public String getQuestion(int i) {		
 		return this.get(i).getQuestion();
 	}
+
+	public String getAnswer(int i) {
+		return this.get(i).getAnswer();
+	}
 	
 	/**
 	 * Answers a question from the quiz
@@ -116,13 +120,13 @@ public class Quiz extends ArrayList<Question> {
 		}
 		return sb.toString();
 	}
-	
+
 	/**
 	 * 
 	 * @param index
 	 * @return String of Answers to study
 	 */
-	public String studyAnswers(int index) {
+	/*public String studyAnswers(int index) {
 		return answerList.get(index);
 	}
 
@@ -136,7 +140,7 @@ public class Quiz extends ArrayList<Question> {
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
-	}	
+	}	*/
 	
 	/**
 	 * Creates an ArrayList with each line from a filepath

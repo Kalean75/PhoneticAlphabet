@@ -206,8 +206,8 @@ public class QuizUserInterface extends JFrame {
 			maxIndex = quiz.size() - 1;	
 			quizIndex = 0;
 			switchPanel(studyPanel);
-			studyPanel.lblQuestion.setText(quiz.studyAnswers(quizIndex));
-			studyPanel.btnBack.setVisible(false);
+			studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex) + ": "+ quiz.getAnswer(quizIndex));
+			studyPanel.btnBack.setEnabled(false);
 		});
 		
 		//quizPanel===========================================
@@ -247,14 +247,14 @@ public class QuizUserInterface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(quizIndex == maxIndex - 1) {
-					studyPanel.btnFwd.setVisible(false);
+					studyPanel.btnFwd.setEnabled(false);
 				}
 				
-				studyPanel.lblQuestion.setText(quiz.studyAnswers(nextIndex()));
+				studyPanel.lblQuestion.setText(quiz.getQuestion(nextIndex())+ ":  "+ quiz.getAnswer(quizIndex));
 				
 				if(hasPreviousIndex())
 				{
-					studyPanel.btnBack.setVisible(true);
+					studyPanel.btnBack.setEnabled(true);
 				}
 				
 			}
@@ -262,14 +262,14 @@ public class QuizUserInterface extends JFrame {
 		
 		studyPanel.btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				studyPanel.lblQuestion.setText(quiz.studyAnswers(lastIndex()));
+				studyPanel.lblQuestion.setText(quiz.getQuestion(lastIndex())+ ":  "+ quiz.getAnswer(quizIndex));
 				if(!hasPreviousIndex())
 				{
-					studyPanel.btnBack.setVisible(false);
+					studyPanel.btnBack.setEnabled(false);
 				}
 				
 				if(hasNextIndex()) {
-					studyPanel.btnFwd.setVisible(true);
+					studyPanel.btnFwd.setEnabled(true);
 				}
 
 			}
@@ -283,8 +283,8 @@ public class QuizUserInterface extends JFrame {
 		
 		studyPanel.btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				studyPanel.btnFwd.setVisible(true);
-				studyPanel.btnBack.setVisible(true);
+				studyPanel.btnFwd.setEnabled(true);
+				studyPanel.btnBack.setEnabled(true);
 				switchPanel(sqPanel);
 			}
 		});
@@ -295,7 +295,7 @@ public class QuizUserInterface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				quizIndex = 0;
 				quizPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));	
-				switchPanel(sqPanel);
+				switchPanel(mmPanel);
 			}
 		});
 		
@@ -305,6 +305,7 @@ public class QuizUserInterface extends JFrame {
 				quizPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
 				resultPanel.btnLatest.setVisible(true);
 				switchPanel(quizPanel);
+				quizPanel.answerField.setText("");
 			}
 		});
 		
