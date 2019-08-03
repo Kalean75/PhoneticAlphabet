@@ -268,6 +268,8 @@ public class QuizUserInterface extends JFrame {
 		
 		studyPanel.btnQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				studyPanel.btnFwd.setVisible(true);
+				studyPanel.btnBack.setVisible(true);
 				switchPanel(quizPanel);		
 			}
 		});
