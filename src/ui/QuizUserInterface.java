@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -215,8 +216,9 @@ public class QuizUserInterface extends JFrame {
 			quizPanel.controlPanel.removeAll();									//remove start button
 			quizPanel.controlPanel.add(quizPanel.answerField);					//add answerField
 			quizPanel.answerField.requestFocus();								//request focus so user doesn't have to click on textfield to type
-			quizIndex = 0;														//index of first object
-			quizPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));			//gets the first question
+			quizIndex = 0;
+			quizPanel.lblQuestion.setFont(new Font("Tahoma", Font.PLAIN, 30));		//index of first object
+			quizPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));		//gets the first question
 			quizPanel.repaint();
 		});
 		

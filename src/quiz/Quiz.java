@@ -120,28 +120,6 @@ public class Quiz extends ArrayList<Question> {
 		}
 		return sb.toString();
 	}
-
-	/**
-	 * 
-	 * @param index
-	 * @return String of Answers to study
-	 */
-	/*public String studyAnswers(int index) {
-		return answerList.get(index);
-	}
-
-	private List<String> answerList = new ArrayList<String>();{
-		try {
-			reader = new Scanner(new File("src/files/PhoneticAnswers.txt"));
-			while(reader.hasNextLine()){
-				answerList.add(reader.nextLine());
-			}
-			reader.close();
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		}
-	}	*/
-	
 	/**
 	 * Creates an ArrayList with each line from a filepath
 	 * 
