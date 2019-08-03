@@ -209,6 +209,7 @@ public class QuizUserInterface extends JFrame {
 			switchPanel(studyPanel);
 			studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
 			studyPanel.btnQues.setEnabled(false);
+			studyPanel.btnAns.setEnabled(true);
 			studyPanel.btnBack.setEnabled(false);
 			studyPanel.btnFwd.setEnabled(true);
 		});
