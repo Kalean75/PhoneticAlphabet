@@ -5,38 +5,63 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
+import java.awt.GridLayout;
 
 public class ResultPanel extends JPanel {
 
-	protected JButton btnMenu;
+	protected JButton btnMainMenu;
 	protected JButton btnRetake;
+	protected JButton btnLatest;
+	protected JButton btnLast5;
+	protected JTextPane textResults;
+	protected JLabel lblTitle;
+	protected JPanel controlPanel;
+	protected JPanel panel;
 	/**
 	 * Create the panel.
 	 */
 	public ResultPanel() {
 		setLayout(new BorderLayout(0, 0));
+		setBounds(0, 0, 414, 228);
 		
-		JLabel lblTitle = new JLabel("Results");
+		lblTitle = new JLabel("Results");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		add(lblTitle, BorderLayout.NORTH);
 		
-		JLabel lblResults = new JLabel("Results");
-		lblResults.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblResults.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblResults, BorderLayout.CENTER);
+		textResults = new JTextPane();
+		textResults.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		textResults.setText("Results");
+		textResults.setEditable(false);
+		add(textResults, BorderLayout.CENTER);
 		
-		JPanel controlPanel = new JPanel();
+		controlPanel = new JPanel();
 		add(controlPanel, BorderLayout.SOUTH);
 		
-		JButton btnMenu = new JButton("Main menu");
-		controlPanel.add(btnMenu);
+		btnMainMenu = new JButton("Main menu");
+		btnMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		controlPanel.add(btnMainMenu);
 		
-		JButton btnRetake = new JButton("Take Again");
+		btnRetake = new JButton("Take Again");
+		btnRetake.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		controlPanel.add(btnRetake);
+		
+		btnLast5= new JButton("Last 5 Results");
+		controlPanel.add(btnLast5);
+		btnLast5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		btnLatest= new JButton("Latest Result");
+		controlPanel.add(btnLatest);
+		btnLatest.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		panel = new JPanel();
+		add(panel, BorderLayout.EAST);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
 
 	}
 

@@ -2,6 +2,8 @@ package quiz;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,6 +25,7 @@ public class Quiz extends ArrayList<Question> {
 	private Result result;							//Results post quiz
 	public Iterator iter;							//Allows traversal of questions
 	private Scanner reader;
+	private List<String> Results = new ArrayList<>();
 	/**
 	 * Constructs a Quiz with questions from the phonetic alphabet
 	 * 
@@ -80,11 +83,36 @@ public class Quiz extends ArrayList<Question> {
 	
 	/**
 	 * Sets result; score, and list of incorrect questions
+	 * @throws IOException 
 	 */
-	public void setResult() {
-		result = new Result(this.size(),incorrect,incorrectQuestions);
+	public void setResult() throws IOException {
+		result = new Result(this.size(), incorrect, incorrectQuestions);
+		FileWriter writer = new FileWriter("src/files/Results.txt");
+		Results.add(result.toString());
+		if(Results.size() > 5) {
+			Results.remove(0);
+		}
+		for(String str: Results) {
+			  writer.write(str);
+			  writer.write("\n");
+			}
+		writer.close();
+		incorrect = 0;
 	}
 	
+	public String getResult() {
+		return result.toString();
+	}
+	
+	public String getLast5() throws FileNotFoundException {
+		return Results + "";
+	  } 
+	
+	/**
+	 * 
+	 * @param index
+	 * @return String of Answers to study
+	 */
 	public String studyAnswers(int index) {
 		return answerList.get(index);
 	}
@@ -120,6 +148,5 @@ public class Quiz extends ArrayList<Question> {
 		return list;
 
 	}
-
 	
 }

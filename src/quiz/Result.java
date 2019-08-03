@@ -1,6 +1,11 @@
 package quiz;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -8,9 +13,9 @@ import java.util.ArrayList;
  *
  */
 public class Result {
-	
 	int totalQuestions;
 	int incorrect;
+	private Quiz quiz;
 	ArrayList<Question> incorrectQuestions;
 	//Time time;
 	//QuestionList wrongQList;
@@ -24,9 +29,9 @@ public class Result {
 	}
 	
 	//TODO
-	public void writeToFile() {
-		
-	}
+	public void writeToFile() throws IOException {
+		//TODO: fill in 
+		}
 	
 	@Override
 	public String toString() {

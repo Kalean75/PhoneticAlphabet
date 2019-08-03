@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import quiz.Question;
 import quiz.Quiz;
 import quiz.QuizException;
+import quiz.Result;
 
 import javax.swing.JLayeredPane;
 
@@ -27,6 +29,7 @@ public class QuizUserInterface extends JFrame {
 	private JPanel contentPane;
 	private JLayeredPane layeredPane;
 	private Quiz quiz;
+	private Result result;
 	private SelectQuizPanel sqPanel;
 	private CustomQuizPanel cqPanel;
 	private MainMenuPanel mmPanel;
@@ -227,9 +230,16 @@ public class QuizUserInterface extends JFrame {
 				quizPanel.repaint();												//repaint panel
 			}
 			else {
-				quizPanel.answerField.setText("this is when the result panel would show");	//remove this once switchPanel is implemented
-				quizPanel.repaint();
+				try {
+					quiz.setResult();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				resultPanel.textResults.setText(quiz.getResult());
 				switchPanel(resultPanel);
+				resultPanel.btnLast5.setVisible(true);
+				resultPanel.btnLatest.setVisible(false);
 			}
 		});
 		
@@ -268,8 +278,6 @@ public class QuizUserInterface extends JFrame {
 		
 		studyPanel.btnQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				studyPanel.btnFwd.setVisible(true);
-				studyPanel.btnBack.setVisible(true);
 				switchPanel(quizPanel);		
 			}
 		});
@@ -283,16 +291,44 @@ public class QuizUserInterface extends JFrame {
 		});
 		
 		//resultsPanel===========================================
-		//TODO: implement result actions
-		/*resultPanel.btnMenu.addActionListener(new ActionListener() {
+		
+		resultPanel.btnMainMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				quizIndex = 0;
+				quizPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));	
+				switchPanel(sqPanel);
 			}
 		});
 		
 		resultPanel.btnRetake.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				quizIndex = 0;
+				quizPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
+				resultPanel.btnLatest.setVisible(true);
+				switchPanel(quizPanel);
 			}
-		});*/
+		});
+		
+		resultPanel.btnLast5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resultPanel.btnLatest.setVisible(true);
+				resultPanel.btnLast5.setVisible(false);
+				try {
+					resultPanel.textResults.setText(quiz.getLast5().toString());
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		resultPanel.btnLatest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resultPanel.btnLast5.setVisible(true);
+				resultPanel.btnLatest.setVisible(false);
+				resultPanel.textResults.setText(quiz.getResult());
+			}
+		});
 	}
 
 }
