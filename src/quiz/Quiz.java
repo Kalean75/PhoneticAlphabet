@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -20,7 +22,7 @@ public class Quiz extends ArrayList<Question> {
 	private int incorrect;							//Number of incorrect answers
 	private Result result;							//Results post quiz
 	public Iterator iter;							//Allows traversal of questions
-
+	private Scanner reader;
 	/**
 	 * Constructs a Quiz with questions from the phonetic alphabet
 	 * 
@@ -82,7 +84,22 @@ public class Quiz extends ArrayList<Question> {
 	public void setResult() {
 		result = new Result(this.size(),incorrect,incorrectQuestions);
 	}
-		
+	
+	public String studyAnswers(int index) {
+		return answerList.get(index);
+	}
+
+	private List<String> answerList = new ArrayList<String>();{
+		try {
+			reader = new Scanner(new File("src/files/PhoneticAnswers.txt"));
+			while(reader.hasNextLine()){
+				answerList.add(reader.nextLine());
+			}
+			reader.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+	}	
 	
 	/**
 	 * Creates an ArrayList with each line from a filepath

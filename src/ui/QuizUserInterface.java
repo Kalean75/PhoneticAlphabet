@@ -4,8 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -31,7 +36,6 @@ public class QuizUserInterface extends JFrame {
 	
 	private int quizIndex;
 	private int maxIndex;
-
 	//private StudyPanel sPanel;
 	
 	/**
@@ -95,7 +99,6 @@ public class QuizUserInterface extends JFrame {
 		studyPanel = new StudyPanel();
 		resultPanel = new ResultPanel();
 	}
-
 	/**
 	 * Switch to different panel
 	 * @param panel
@@ -198,11 +201,11 @@ public class QuizUserInterface extends JFrame {
 		});
 		
 		mmPanel.btnStudy.addActionListener(e -> {
-			switchPanel(studyPanel);
-			studyPanel.btnBack.setVisible(false);
 			maxIndex = quiz.size() - 1;	
 			quizIndex = 0;
-			studyPanel.lblQuestion.setText(quiz.getQuestion(quizIndex));
+			switchPanel(studyPanel);
+			studyPanel.lblQuestion.setText(quiz.studyAnswers(quizIndex));
+			studyPanel.btnBack.setVisible(false);
 		});
 		
 		//quizPanel===========================================
@@ -238,21 +241,19 @@ public class QuizUserInterface extends JFrame {
 					studyPanel.btnFwd.setVisible(false);
 				}
 				
-				studyPanel.lblQuestion.setText(quiz.getQuestion(nextIndex()));
+				studyPanel.lblQuestion.setText(quiz.studyAnswers(nextIndex()));
 				
 				if(hasPreviousIndex())
 				{
 					studyPanel.btnBack.setVisible(true);
 				}
 				
-				
-				//TODO: figure out how to cycle through Answers
 			}
 		});
 		
 		studyPanel.btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				studyPanel.lblQuestion.setText(quiz.getQuestion(lastIndex()));
+				studyPanel.lblQuestion.setText(quiz.studyAnswers(lastIndex()));
 				if(!hasPreviousIndex())
 				{
 					studyPanel.btnBack.setVisible(false);
@@ -261,13 +262,24 @@ public class QuizUserInterface extends JFrame {
 				if(hasNextIndex()) {
 					studyPanel.btnFwd.setVisible(true);
 				}
-				
-				//TODO: figure out how to cycle through answers
+
+			}
+		});
+		
+		studyPanel.btnQuiz.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchPanel(quizPanel);		
+			}
+		});
+		
+		studyPanel.btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchPanel(sqPanel);
 			}
 		});
 		
 		//resultsPanel===========================================
-		//TODO: implement reult actions
+		//TODO: implement result actions
 		/*resultPanel.btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
