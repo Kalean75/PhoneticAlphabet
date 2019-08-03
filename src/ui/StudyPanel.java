@@ -17,6 +17,8 @@ public class StudyPanel extends JPanel {
 	protected JLabel lblTitle;
 	protected JLabel lblQuestion;
 	protected JPanel controlPanel;
+	protected JButton btnMenu;
+	protected JButton btnQuiz;
 	/**
 	 * Create the panel.
 	 */
@@ -38,8 +40,22 @@ public class StudyPanel extends JPanel {
 		controlPanel = new JPanel();
 		add(controlPanel, BorderLayout.SOUTH);
 		
+		createMenubtn(controlPanel);
+		
 		createBackBtn(controlPanel);
 		createFwdBtn(controlPanel);
+		
+		createQuizbtn(controlPanel);
+	}
+	private void createMenubtn(JPanel controlPanel) {
+		btnMenu = new JButton("Main Menu");
+		btnMenu.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		controlPanel.add(btnMenu);
+	}
+	private void createQuizbtn(JPanel controlPanel) {
+		btnQuiz = new JButton("Take Quiz");
+		btnQuiz.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		controlPanel.add(btnQuiz);
 	}
 	private void createBackBtn(JPanel controlPanel) {
 		btnBack = new JButton("  <");
