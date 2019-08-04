@@ -255,7 +255,7 @@ public class QuizUserInterface extends JFrame {
 				studyPanel.btnAns.setEnabled(true);
 				studyPanel.btnQues.setEnabled(false);
 				
-				if(quizIndex == maxIndex - 1) {
+				if(quizIndex == maxIndex) {
 					studyPanel.btnFwd.setEnabled(false);
 				}
 				if(hasPreviousIndex())
