@@ -15,8 +15,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * First Panel that asks user to selct a quiz
- * @author jerem
+ * First Panel that asks user to select a quiz
+ * @author Devin White
  *
  */
 @SuppressWarnings("serial")

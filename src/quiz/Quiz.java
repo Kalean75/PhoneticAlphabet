@@ -14,7 +14,7 @@ import java.util.Scanner;
  * QuestionList is a class that extends ArrayList. It was created so that many
  * Questions/Answers could be imported from 2 different files
  * 
- * @author Jeremy
+ * @author Devin White
  *
  */
 @SuppressWarnings("serial")

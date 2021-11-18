@@ -5,7 +5,7 @@ package quiz;
  * String answer. It is pretty much a key value pair with both the Key and Value
  * being Strings
  * 
- * @author Jeremy
+ * @author Devin White
  *
  */
 public class Question {
