@@ -11,7 +11,11 @@ import org.junit.jupiter.api.Test;
 import quiz.Question;
 import quiz.Quiz;
 import quiz.QuizException;
-
+/**
+ * 
+ * @author Devin White
+ *
+ */
 class QuestionListTest {
 
 	@Test
