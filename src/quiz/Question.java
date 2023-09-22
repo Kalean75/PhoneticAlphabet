@@ -18,7 +18,8 @@ public class Question {
 	 * @param question
 	 * @param answer
 	 */
-	public Question(String question, String answer) {
+	public Question(String question, String answer) 
+	{
 		this.question = question;
 		this.answer = answer;
 	}

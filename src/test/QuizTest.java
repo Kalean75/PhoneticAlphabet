@@ -22,7 +22,7 @@ class QuestionListTest {
 	void testQuestionList() {
 		Quiz quiz = null;
 		try {
-			quiz = new Quiz("src/files/PhoneticQuestions.txt", "src/files/PhoneticAnswers.txt");
+			quiz = new Quiz("./src/files/PhoneticQuestions.txt", "./src/files/PhoneticAnswers.txt");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,7 +39,7 @@ class QuestionListTest {
 	void testQuestionListException() {
 		
 		Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
-			Quiz quiz = new Quiz("src/files/PhoneticQuestionsEXTRALINE.txt", "src/files/PhoneticAnswers.txt");
+			Quiz quiz = new Quiz("./src/files/PhoneticQuestionsEXTRALINE.txt", "./src/files/PhoneticAnswers.txt");
 		});
 	}
 }

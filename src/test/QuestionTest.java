@@ -20,4 +20,9 @@ class QuestionTest {
 		assertFalse("Testing answer()",q1.answer("alphaa"));
 	}
 
+	@Test
+	void testAnswer3() {
+		Question q1 = new Question("Z","Zulu");
+		assertTrue("Testing answer()",q1.answer("ZULU"));
+	}
 }

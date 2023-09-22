@@ -32,8 +32,9 @@ public class Quiz extends ArrayList<Question> {
 	 * @throws FileNotFoundException
 	 * @throws QuizException 
 	 */
-	public Quiz() throws FileNotFoundException, QuizException {
-		this("src/files/PhoneticQuestions.txt", "src/files/PhoneticAnswers.txt");
+	public Quiz() throws FileNotFoundException, QuizException 
+	{
+		this("./src/files/PhoneticQuestions.txt", "./src/files/PhoneticAnswers.txt");
 		
 	}
 
@@ -91,7 +92,7 @@ public class Quiz extends ArrayList<Question> {
 	 */
 	public void setResult() throws IOException {
 		result = new Result(this.size(), incorrect, incorrectQuestions);
-		FileWriter writer = new FileWriter("src/files/Results.txt");
+		FileWriter writer = new FileWriter("./src/files/Results.txt");
 		Results.add(result.toString());
 		if(Results.size() > 5) {
 			Results.remove(0);
@@ -110,7 +111,7 @@ public class Quiz extends ArrayList<Question> {
 
 	public static String getLast5() throws FileNotFoundException {
 		StringBuilder sb = new StringBuilder();
-		Scanner sc = new Scanner(new File("src/files/Results.txt"));
+		Scanner sc = new Scanner(new File("./src/files/Results.txt"));
 		String last5;
 		for(int i = 0; i < 5; i++){
 			if (sc.hasNextLine()){

@@ -27,9 +27,10 @@ public class Result {
 	}
 
 	//TODO
-	public void writeToFile() throws IOException {
+	public void writeToFile() throws IOException 
+	{
 		//TODO: fill in 
-		}
+	}
 	
 	@Override
 	public String toString() {
