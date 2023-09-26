@@ -7,16 +7,22 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.FileDialog;
 
 public class CustomQuizPanel extends JPanel {
 	public JTextField txtQuestionpath;
 	public JTextField txtAnswerpath;
 	public JButton btnBack;
 	public JButton btnSubmit;
+	private JButton btnAnswers;
+	private JButton btnQuiz;
 
 	/**
 	 * Create the panel.
@@ -48,7 +54,10 @@ public class CustomQuizPanel extends JPanel {
 
 	}
 
-	private JPanel createTextFieldPanel() {
+	private JPanel createTextFieldPanel() 
+	{
+	    FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
+	    
 		JPanel textFieldPanel = new JPanel();
 		textFieldPanel.setBorder(new EmptyBorder(50, 0, 0, 0));
 
@@ -57,21 +66,48 @@ public class CustomQuizPanel extends JPanel {
 		createTxtQuestionPath();
 		createTxtAnswerPath();
 		textFieldPanel.add(txtQuestionpath);
+		
+		btnQuiz = new JButton("Browse");
+		btnQuiz.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+			    dialog.setMode(FileDialog.LOAD);
+			    dialog.setVisible(true);
+			    String file = dialog.getFile();
+			    dialog.dispose();
+				txtQuestionpath.setText(file);
+			}
+		});
+		textFieldPanel.add(btnQuiz);
 		textFieldPanel.add(txtAnswerpath);
+		
+		btnAnswers = new JButton("Browse");
+		btnAnswers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+			    dialog.setMode(FileDialog.LOAD);
+			    dialog.setVisible(true);
+			    String file = dialog.getFile();
+			    dialog.dispose();
+				txtAnswerpath.setText(file);
+			}
+		});
+		textFieldPanel.add(btnAnswers);
 		return textFieldPanel;
 	}
 
 	private void createTxtAnswerPath() {
 		txtAnswerpath = new JTextField();
 		txtAnswerpath.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAnswerpath.setText("filepath for <answers>.txt");
+		txtAnswerpath.setText("Choose a .txt file for answers");
 		txtAnswerpath.setColumns(30);
 	}
 
 	private void createTxtQuestionPath() {
 		txtQuestionpath = new JTextField();
 		txtQuestionpath.setHorizontalAlignment(SwingConstants.CENTER);
-		txtQuestionpath.setText("filepath for <questions>.txt");
+		txtQuestionpath.setText("Choose a .txt file for questions");
 		txtQuestionpath.setColumns(30);
 	}
 
